@@ -69,7 +69,11 @@ object STUB {
         ),
     )
 
-    fun getResult(level: Int): String {
-        return result.take(level).joinToString(" ") { it.variant }
+    fun getResult(level: Int): List<String> {
+        return result.take(level).map { it.variant }
     }
+
+//    fun getResult(level: Int): String {
+//        return result.take(level).joinToString(" ") { it.variant }
+//    }
 }

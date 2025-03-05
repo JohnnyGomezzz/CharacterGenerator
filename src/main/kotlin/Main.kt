@@ -2,9 +2,24 @@ import data.STUB
 
 fun main() {
 
-    print("Выберите уровень сложности (1-5):")
+    println(
+        """
+            1. Кто?
+            2. Какого пола?
+            3. Какая профессия?
+            4. Что делает?
+            5. Где находится?
+            
+        """.trimIndent()
+    )
 
+    print("Выберите уровень сложности (1-5): ")
     val level = readln().toInt()
 
-    println(STUB.getResult(level))
+    val firstResult = STUB.getResult(level)
+    var num = 1
+    while (num <= level) {
+        println("$num. ${firstResult[num.minus(1)]}")
+        num += 1
+    }
 }
