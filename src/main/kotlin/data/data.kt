@@ -4,82 +4,71 @@ import Parameter
 
 object STUB {
 
-    private val result = mutableListOf(
-        Parameter(
-            variant = listOf(
-                "человек",
-                "андроид",
-                "птица",
-                "змея",
-                "кот",
-                "собака",
-                "крыса",
-                "ящер",
-                "змея",
-                "енот",
-            ).random()
-        ),
-        Parameter(
-            variant = listOf(
-                "мужского пола",
-                "женского пола",
-            ).random()
-        ),
-        Parameter(
-            variant = listOf(
-                "врач",
-                "волшебник",
-                "военный",
-                "пират",
-                "космонавт",
-                "пилот",
-                "шахтёр",
-                "художник",
-                "поэт",
-                "программист",
-            ).random()
-        ),
-        Parameter(
-            variant = listOf(
-                "стоит",
-                "бежит",
-                "ест",
-                "сидит",
-                "лежит",
-                "прыгает",
-                "пьёт",
-                "пинает",
-                "поёт",
-                "играет",
-            ).random()
-        ),
-        Parameter(
-            variant = listOf(
-                "в квартире",
-                "в лесу",
-                "в пещере",
-                "в автомобиле",
-                "в цирке",
-                "на корабле",
-                "в самолёте",
-                "под водой",
-                "в поезде",
-                "в метро",
-            ).random()
-        ),
+    private val base = listOf(
+        "человек",
+        "андроид",
+        "птица",
+        "змея",
+        "кот",
+        "собака",
+        "крыса",
+        "ящер",
+        "змея",
+        "енот",
     )
 
-    fun getResult(level: Int): List<String> {
-        return result.take(level).map { it.variant }
-    }
+    private val gender = listOf(
+        "мужского пола",
+        "женского пола"
+    )
 
-    fun getResultOfChars(level: Int): MutableList<Parameter> {
-        return result.take(level).toMutableList()
-    }
+    private val profession = listOf(
+        "врач",
+        "волшебник",
+        "военный",
+        "пират",
+        "космонавт",
+        "пилот",
+        "шахтёр",
+        "художник",
+        "поэт",
+        "программист",
+    )
 
-    fun changeChar(firstResult: MutableList<Parameter>) {
-        firstResult.mapIndexed { index, parameter ->
-            if (parameter.isActive) parameter.variant = result[index].variant
-        }
+    private val action = listOf(
+        "стоит",
+        "бежит",
+        "ест",
+        "сидит",
+        "лежит",
+        "прыгает",
+        "пьёт",
+        "пинает",
+        "поёт",
+        "играет",
+    )
+
+    private val place = listOf(
+        "в квартире",
+        "в лесу",
+        "в пещере",
+        "в автомобиле",
+        "в цирке",
+        "на корабле",
+        "в самолёте",
+        "под водой",
+        "в поезде",
+        "в метро",
+    )
+
+    fun getResultList(): List<Parameter> {
+        val result = listOf(
+            Parameter(variant = base.random()),
+            Parameter(variant = gender.random()),
+            Parameter(variant = profession.random()),
+            Parameter(variant = action.random()),
+            Parameter(variant = place.random()),
+        )
+        return result
     }
 }
