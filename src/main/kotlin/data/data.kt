@@ -1,11 +1,11 @@
 package data
 
-import Characteristic
+import Parameter
 
 object STUB {
 
-    private val result = listOf(
-        Characteristic(
+    private val result = mutableListOf(
+        Parameter(
             variant = listOf(
                 "человек",
                 "андроид",
@@ -19,13 +19,13 @@ object STUB {
                 "енот",
             ).random()
         ),
-        Characteristic(
+        Parameter(
             variant = listOf(
                 "мужского пола",
                 "женского пола",
             ).random()
         ),
-        Characteristic(
+        Parameter(
             variant = listOf(
                 "врач",
                 "волшебник",
@@ -39,7 +39,7 @@ object STUB {
                 "программист",
             ).random()
         ),
-        Characteristic(
+        Parameter(
             variant = listOf(
                 "стоит",
                 "бежит",
@@ -53,7 +53,7 @@ object STUB {
                 "играет",
             ).random()
         ),
-        Characteristic(
+        Parameter(
             variant = listOf(
                 "в квартире",
                 "в лесу",
@@ -73,7 +73,13 @@ object STUB {
         return result.take(level).map { it.variant }
     }
 
-//    fun getResult(level: Int): String {
-//        return result.take(level).joinToString(" ") { it.variant }
-//    }
+    fun getResultOfChars(level: Int): MutableList<Parameter> {
+        return result.take(level).toMutableList()
+    }
+
+    fun changeChar(firstResult: MutableList<Parameter>) {
+        firstResult.mapIndexed { index, parameter ->
+            if (parameter.isActive) parameter.variant = result[index].variant
+        }
+    }
 }
